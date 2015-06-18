@@ -25,7 +25,7 @@ RUN mkdir /opt/osxcross &&                                      \
     git checkout 7734f4f0ed24eecbb9e852f6bba688072c5a93c3 &&    \
     ./tools/get_dependencies.sh &&                              \
     curl -L -o ./tarballs/MacOSX10.8.sdk.tar.xz https://s3.amazonaws.com/andrew-osx-sdks/MacOSX10.8.sdk.tar.xz && \
-    yes | ./build.sh
+    yes | PORTABLE=true ./build.sh
 
 ENV PATH $PATH:/opt/osxcross/target/bin
 CMD /bin/bash
