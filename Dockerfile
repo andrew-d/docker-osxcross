@@ -23,6 +23,7 @@ RUN mkdir /opt/osxcross &&                                      \
     git clone https://github.com/tpoechtrager/osxcross.git &&   \
     cd osxcross &&                                              \
     git checkout 7734f4f0ed24eecbb9e852f6bba688072c5a93c3 &&    \
+    sed -i -e 's|-march=native||g' ./build_clang.sh ./wrapper/build.sh && \
     ./tools/get_dependencies.sh &&                              \
     curl -L -o ./tarballs/MacOSX10.8.sdk.tar.xz https://s3.amazonaws.com/andrew-osx-sdks/MacOSX10.8.sdk.tar.xz && \
     yes | PORTABLE=true ./build.sh
