@@ -27,12 +27,13 @@ RUN mkdir /opt/osxcross &&                                      \
     cd /opt &&                                                  \
     git clone https://github.com/tpoechtrager/osxcross.git &&   \
     cd osxcross &&                                              \
-    git checkout f5bec454d3cc8c7e2e914af9ec443a4d44458ca5 &&    \
+    git checkout 56eba88a9b57d6764a0c4802d55d3dd6d8c051fc &&    \
     sed -i -e 's|-march=native||g' ./build_clang.sh ./wrapper/build.sh && \
     ./tools/get_dependencies.sh &&                              \
     curl -L -o ./tarballs/MacOSX${OSXCROSS_SDK_VERSION}.sdk.tar.xz \
         https://s3.amazonaws.com/andrew-osx-sdks/MacOSX${OSXCROSS_SDK_VERSION}.sdk.tar.xz && \
-    yes | PORTABLE=true ./build.sh
+    yes | PORTABLE=true ./build.sh &&                           \
+    ./build_compiler_rt.sh
 
 ENV PATH $PATH:/opt/osxcross/target/bin
 CMD /bin/bash
