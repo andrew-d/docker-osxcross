@@ -11,6 +11,7 @@ RUN apt-get update && \
         file                \
         flex                \
         git                 \
+        libtool             \
         pkg-config          \
         python              \
         texinfo             \
